@@ -152,3 +152,32 @@ public:
         }
         return -1;
     }
+
+    void clear() {
+        while (head) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+        tail = nullptr;
+        size = 0;
+    }
+
+    void extend(DoublyLinkedList* other) {
+        Node* temp = other->head;
+        while (temp) {
+            append(temp->data);
+            temp = temp->next;
+        }
+    }
+
+    void print() {
+        Node* temp = head;
+        while (temp) {
+            std::cout << temp->data << " ";
+            temp = temp->next;
+        }
+        std::cout << std::endl;
+    }
+};
+
