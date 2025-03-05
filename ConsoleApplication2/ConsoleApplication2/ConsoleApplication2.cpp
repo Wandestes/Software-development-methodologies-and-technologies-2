@@ -181,3 +181,45 @@ public:
     }
 };
 
+int main() {
+    DoublyLinkedList list;
+
+    std::cout << "Method: append" << std::endl;
+    list.append('A');
+    list.append('B');
+    list.append('C');
+    list.print();
+
+    std::cout << "Method: insert" << std::endl;
+    list.insert('D', 1);
+    list.print();
+
+    std::cout << "Method: deleteAt" << std::endl;
+    std::cout << "Deleted: " << list.deleteAt(2) << std::endl;
+    list.print();
+
+    std::cout << "Method: deleteAll" << std::endl;
+    list.deleteAll('A');
+    list.print();
+
+    std::cout << "Method: findFirst" << std::endl;
+    std::cout << "FindFirst B: " << list.findFirst('B') << std::endl;
+
+    std::cout << "Method: findLast" << std::endl;
+    std::cout << "FindLast D: " << list.findLast('D') << std::endl;
+
+    std::cout << "Method: clone" << std::endl;
+    DoublyLinkedList* copy = list.clone();
+    copy->print();
+
+    std::cout << "Method: reverse" << std::endl;
+    list.reverse();
+    list.print();
+
+    std::cout << "Method: extend" << std::endl;
+    copy->extend(&list);
+    copy->print();
+
+    delete copy;
+    return 0;
+}
