@@ -22,5 +22,6 @@ jobs:
 
     - name: Compile and run tests
       run: |
-        g++ -std=c++17 -Wall -Wextra -o test_program Tests/test.cpp -I./Catch
+        cd Tests
+        g++ -std=c++17 -Wall -Wextra -o test_program test.cpp -I../Catch
         ./test_program
