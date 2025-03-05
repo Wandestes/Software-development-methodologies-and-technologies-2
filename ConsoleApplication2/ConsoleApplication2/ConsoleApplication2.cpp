@@ -61,3 +61,59 @@ public:
         }
         size++;
     }
+
+    char deleteAt(int index) {
+        if (index < 0 || index >= size) {
+            throw std::out_of_range("Invalid index");
+        }
+        Node* temp = head;
+        if (index == 0) {
+            head = head->next;
+            if (head) head->prev = nullptr;
+        }
+        else {
+            for (int i = 0; i < index; i++) temp = temp->next;
+            temp->prev->next = temp->next;
+            if (temp->next) temp->next->prev = temp->prev;
+            else tail = temp->prev;
+        }
+        char data = temp->data;
+        delete temp;
+        size--;
+        return data;
+    }
+
+    void deleteAll(char element) {
+        Node* temp = head;
+        while (temp) {
+            Node* nextNode = temp->next;
+            if (temp->data == element) {
+                if (temp->prev) temp->prev->next = temp->next;
+                if (temp->next) temp->next->prev = temp->prev;
+                if (temp == head) head = temp->next;
+                if (temp == tail) tail = temp->prev;
+                delete temp;
+                size--;
+            }
+            temp = nextNode;
+        }
+    }
+
+    char get(int index) {
+        if (index < 0 || index >= size) {
+            throw std::out_of_range("Invalid index");
+        }
+        Node* temp = head;
+        for (int i = 0; i < index; i++) temp = temp->next;
+        return temp->data;
+    }
+
+    DoublyLinkedList* clone() {
+        DoublyLinkedList* copy = new DoublyLinkedList();
+        Node* temp = head;
+        while (temp) {
+            copy->append(temp->data);
+            temp = temp->next;
+        }
+        return copy;
+    }
