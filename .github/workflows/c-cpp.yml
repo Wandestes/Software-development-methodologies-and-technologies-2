@@ -17,6 +17,13 @@ jobs:
     - name: Install dependencies
       run: sudo apt update && sudo apt install -y g++ cmake make
 
+    - name: Print directory structure
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "Listing files:"
+        ls -R
+
     - name: Compile main program
       run: g++ -std=c++17 -Wall -Wextra -o my_program ConsoleApplication2/ConsoleApplication2/ConsoleApplication2.cpp
 
