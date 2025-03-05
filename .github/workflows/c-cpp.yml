@@ -18,10 +18,10 @@ jobs:
     - name: Install dependencies
       run: sudo apt update && sudo apt install -y g++ cmake make
 
-
-    - name: Compile project
+    - name: Compile main program
       run: g++ -std=c++17 -Wall -Wextra -o my_program ConsoleApplication2/ConsoleApplication2/ConsoleApplication2.cpp
 
-
-    - name: Run unit tests
-      run: ./my_program  
+    - name: Compile and run tests
+      run: |
+        g++ -std=c++17 -Wall -Wextra -o test_program Tests/test.cpp -I.  
+        ./test_program  
