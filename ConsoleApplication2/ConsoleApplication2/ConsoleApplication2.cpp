@@ -117,3 +117,38 @@ public:
         }
         return copy;
     }
+
+    void reverse() {
+        Node* temp = nullptr;
+        Node* current = head;
+        tail = head;
+        while (current) {
+            temp = current->prev;
+            current->prev = current->next;
+            current->next = temp;
+            current = current->prev;
+        }
+        if (temp) head = temp->prev;
+    }
+
+    int findFirst(char element) {
+        Node* temp = head;
+        int index = 0;
+        while (temp) {
+            if (temp->data == element) return index;
+            temp = temp->next;
+            index++;
+        }
+        return -1;
+    }
+
+    int findLast(char element) {
+        Node* temp = tail;
+        int index = size - 1;
+        while (temp) {
+            if (temp->data == element) return index;
+            temp = temp->prev;
+            index--;
+        }
+        return -1;
+    }
