@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -18,8 +17,19 @@ jobs:
     - name: Install dependencies
       run: sudo apt update && sudo apt install -y g++ cmake make
 
-    - name: Compile project
+    - name: Compile main application
       run: g++ -std=c++17 -Wall -Wextra -o my_program ConsoleApplication2/ConsoleApplication2/ConsoleApplication2.cpp
 
+
+    - name: Create build directory for tests
+      run: mkdir -p build
+
+
+    - name: Configure the project with CMake
+      run: cmake -S . -B build
+
+    - name: Build the tests
+      run: cmake --build build
+
     - name: Run unit tests
-      run: ./my_program
+      run: ./build/tests  
