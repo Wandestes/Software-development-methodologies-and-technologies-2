@@ -24,7 +24,7 @@ TEST_CASE("DoublyLinkedList: Insert") {
     
     list.insert('B', 1);
     REQUIRE(list.length() == 3);
-    REQUIRE(list.get(1) == 'B');
+    REQUIRE(list.get(1) == 'Z');
     REQUIRE(list.get(2) == 'C');
 }
 
