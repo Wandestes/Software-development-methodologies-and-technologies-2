@@ -1,0 +1,25 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: sudo apt update && sudo apt install -y g++ cmake make
+
+    - name: Compile project
+      run: g++ -std=c++17 -Wall -Wextra -o my_program ConsoleApplication2.cpp
+
+    - name: Run unit tests
+      run: ./my_program
