@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "../Catch/catch_amalgamated.hpp"
-#include "#include "../ConsoleApplication2/DoublyLinkedList.h"
+#include "../ConsoleApplication2/DoublyLinkedList.h"
 
 TEST_CASE("DoublyLinkedList: Append and Length") {
     DoublyLinkedList list;
